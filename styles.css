@@ -1,0 +1,72 @@
+    #addDiv{
+        text-align: center;
+    }
+
+    #addDiv textarea{
+        width: 80%; 
+    }
+
+/* Mobile Media Query*/
+@media screen and (max-width:799px) {
+    h1{
+        color:#618EFF;
+        font-size:32px;
+    }
+    h2{
+        color:#618EFF;
+        font-size:24px;
+    }
+    
+    
+}
+
+/* Tablet Media Query*/
+@media screen and (min-width:800px) and (max-width: 1199px){
+    h1{
+        color:#618EFF;
+        font-size:38px;
+    }
+    h2{
+        color:#618EFF;
+        font-size:36px;
+    }
+}
+
+/* PC Media Query*/
+@media screen and (min-width: 1200px){
+    h1{
+        color:#618EFF;
+        font-size:64px;
+    }
+
+    h2{
+        color:#618EFF;
+        font-size:48px;
+    }
+
+    .seperator{
+        background-color: #FFF153;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+
+        width:262px;
+        height:224px;
+    }
+
+    .card{
+        width: 301px;
+        height:292px;
+        text-align: center;
+        display: inline-block;
+    }
+}
+
+#addButton{
+    background-color: rgb(7, 201, 81);
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+

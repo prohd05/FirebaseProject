@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet">
+        <title> View Tasks </title>
+    </head>
+    <body>
+        <div id="mainDiv">
+            <div class="card"> 
+                <form id="addDiv"> 
+                    <label for="text"> Task Title </label> <br>
+                    <textarea id="taskTitle"> </textarea><br>
+
+                    <label> Task Description </label><br>
+                    <textarea id="taskDesc"> </textarea> <br>
+
+                    <button id="addButton" type="submit"> + </button>
+                    <script type="module" src="addTasks.js" defer> </script>
+                </form>
+            </div>
+            <div class="card">
+                <h1> Title </h1> 
+            <div>
+                <button> Status </button> <button> Remove</button>
+            </div>
+            <div class="seperator">
+                <h4> Desc</h4>
+                <h4> Status </h4>
+            </div>
+                
+            </div>
+        </div>
+
+        <script type="module" src="tasks.js" defer> </script>
+    </body>
+</html>
