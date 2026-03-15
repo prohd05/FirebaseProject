@@ -32,15 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Orders Listed
 
   document.addEventListener("DOMContentLoaded", async () => { // Wait for the DOM to fully load before executing the code
+    await displayTasks();
+  });
+
+  async function displayTasks() {
     // Select the collection
-    const ordersCollection = collection(db, "tasks"); // Reference to the "orders" collection in Firestore
+    const ordersCollection = collection(db, "tasks"); // Reference to the "tasks" collection in Firestore
   
     try { // Use getDocs to retrieve all documents from the collection
-      // Retrieve all documents from the collecti                                                                                                                                                                            on
-      const querySnapshot = await getDocs(ordersCollection); // Get a snapshot of the "orders" collection
-  
-      // Debugging: Print the snapshot to the console
-      console.log("Query Snapshot:", querySnapshot); // This will show the structure of the snapshot and help identify any issues
+      // Retrieve all documents from the collection
+      const querySnapshot = await getDocs(ordersCollection); // Get a snapshot of the "tasks" collection
   
       // Store documents in an array
       const orders = []; // Initialize an empty array to hold the orders
@@ -51,18 +52,70 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   
-      // Debugging: Print the orders array to the console
-      console.log("Orders Array:", orders); // This will show the array of orders retrieved from Firestore and help verify that the data is being processed correctly
+      // Sort orders by createdAt descending (newest first)
+      orders.sort((a, b) => b.createdAt?.toDate() - a.createdAt?.toDate());
   
       // Display data on the webpage
       const list = document.getElementById("viewTasks"); // Select the HTML element where the orders will be displayed
+      list.innerHTML = ''; // Clear existing content
       orders.forEach((task) => {
-        const li = document.createElement("li");
-        li.textContent = `${task.title} ${task.desc} ${task.completed} ${task.createdAt}`;
-        list.appendChild(li);
+        const card = document.createElement("div"); // Created a div for that task.
+        card.className = "card"; // Gives the div the classname "card". 
+        
+        const title = document.createElement("h1"); // Adds the title. 
+        title.textContent = task.title; // Sets title to the title value in the database.
+        card.appendChild(title); // Puts the title in the card div.
+        
+       
+        const buttonDiv = document.createElement("div"); // Adds div for the buttons
+        buttonDiv.className = "sideButtons"; // Gives the div the classname "sideButtons".
+
+        const statusButton = document.createElement("button"); // Adds the status button on the side
+
+        // Manages status button.
+        statusButton.textContent = task.completed ? "Completed" : "Mark Complete"; // Checks boolean to see if completed or not
+        statusButton.addEventListener("click", async () => {
+          try {
+            await updateDoc(doc(db, "tasks", task.id), { // When clicked, it will revese the boolean value in database
+              completed: !task.completed
+            });
+            await displayTasks(); // Refresh the list
+          } catch (error) {
+            alert("Error updating task: " + error.message);
+          }
+        });
+        buttonDiv.appendChild(statusButton); // Puts the status button in the side button div
+        
+        const removeButton = document.createElement("button"); // Adds the remove button on the side
+        removeButton.textContent = "Remove";
+        removeButton.addEventListener("click", async () => {
+          try {
+            await deleteDoc(doc(db, "tasks", task.id)); // When clicked, it will delete the document from the database
+            await displayTasks(); // Refresh the list
+          } catch (error) {
+            alert("Error deleting task: " + error.message);
+          }
+        });
+        buttonDiv.appendChild(removeButton); // Puts the remove button in the side button div
+        card.appendChild(buttonDiv);  // Puts the side button div in the card div
+        
+        const separator = document.createElement("div"); // Adds a div
+        separator.className = "seperator"; // Gives the div the classname "separator".
+        
+        const descH4 = document.createElement("h4"); // Adds the description.
+        descH4.textContent = "Desc: " + task.desc; // Adds the value from the database to the description text.
+        separator.appendChild(descH4); // Puts the description in the separator div
+        
+        const statusH4 = document.createElement("h4"); // Adds the status.
+        statusH4.textContent = "Status: " + (task.completed ? "Completed" : "Pending"); // Changes text value for when button is clicked.
+        separator.appendChild(statusH4); // Puts the status in the separator div
+        
+        card.appendChild(separator); // Puts the separator div in the card div
+        
+        list.appendChild(card); // Puts the card div in the list div.
       });
     } catch (error) { // Handle any errors that occur during the data retrieval process and log them to the console, as well as alert the user
       console.error("Error reading data from Firestore:", error); // Log the error to the console for debugging purposes
-      alert("Failed to load tasks" + error); // Alert the user about the failure to load orders
+      alert("Failed to load tasks: " + error.message); // Alert the user about the failure to load orders
     }
-  });
+  }
