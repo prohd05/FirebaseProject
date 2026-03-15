@@ -1,10 +1,6 @@
-    #addDiv{
-        text-align: center;
-    }
-
-    #addDiv textarea{
-        width: 80%; 
-    }
+body {
+    background-color: #ABE8F5;
+}
 
 /* Mobile Media Query*/
 @media screen and (max-width:799px) {
@@ -17,7 +13,40 @@
         font-size:24px;
     }
     
+    .card{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        width:200px;
+        height:200px;
+    }
+
+    .cardBody{
+        display: flex;
+        align-items: center;
+    }
+
+    .seperator{
+        height: 167px;
+        width:165px;
+        background-color: #FFF153;
+        text-align: center;
+    }
+
+    .sideButtons{
+        height: 87px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
     
+    .sideButtons button{
+        width:28px;
+        height:30px;
+        display: block;
+        border: none;
+    }
 }
 
 /* Tablet Media Query*/
@@ -29,6 +58,44 @@
     h2{
         color:#618EFF;
         font-size:36px;
+    }
+
+    #tasks {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 199px;
+        height: 218px;
+    }
+
+    .cardBody {
+        display: flex;
+        align-items: center;
+    }
+
+    .seperator {
+        height: 167px;
+        width: 165px;
+        background-color: #FFF153;
+        text-align: center;
+    }
+
+    .sideButtons {
+        height: 89px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .sideButtons button {
+        width: 32px;
+        height: 32px;
+        display: block;
+        border: none;
     }
 }
 
@@ -43,30 +110,47 @@
         color:#618EFF;
         font-size:48px;
     }
+    
+    .card{
+        width: 303px;
+        height:294px;
+        text-align: center;
+        display: inline-block;
+    }
 
     .seperator{
         background-color: #FFF153;
-        padding: 10px;
-        margin: 10px;
         text-align: center;
-
         width:262px;
         height:224px;
     }
 
-    .card{
-        width: 301px;
-        height:292px;
-        text-align: center;
-        display: inline-block;
+    
+
+    .cardBody{
+    display: flex;
+    align-items: center;
+    }
+
+    .sideButtons{
+        height: 105px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .sideButtons button{
+        width:40px;
+        height:42px;
+        display: block;
+        border: none;
     }
 }
 
 #addButton{
-    background-color: rgb(7, 201, 81);
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 10px;
+    color:#618EFF;
+    border: none;
+    background-color: transparent;
 }
 
 

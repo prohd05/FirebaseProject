@@ -7,36 +7,25 @@
         <title> View Tasks </title>
     </head>
     <body>
+        <nav>
+            
+        </nav>
         <div id="mainDiv">
-            <div class="card"> 
-                <form id="addDiv"> 
-                    <label for="text"> Task Title </label> <br>
-                    <textarea id="taskTitle"> </textarea><br>
+            <div id="tasks">
+                <div class="card" id="addCard">
+                    <form id="addDiv">
+                        <label>Task Title</label><br>
+                        <textarea id="taskTitle"> </textarea><br>
 
-                    <label> Task Description </label><br>
-                    <textarea id="taskDesc"> </textarea> <br>
+                        <label>Task Description</label><br>
+                        <textarea id="taskDesc"></textarea><br>
 
-                    <button id="addButton" type="submit"> + </button>
-                    <script type="module" src="addTasks.js" defer> </script>
-                </form>
-            </div>
-
-            <div id="viewTasks"> 
-
-            </div>
-            <div class="card">
-                <h1> Title </h1> 
-            <div class="sideButtons">
-                <button> Status </button> <button> Remove</button>
-            </div>
-            <div class="seperator">
-                <h4> Desc</h4>
-                <h4> Status </h4>
-            </div>
-                
+                        <button id="addButton" type="submit">+</button>
+                    </form>
+                </div>
+                <div id="viewTasks"></div>
             </div>
         </div>
-
-        <script type="module" src="index.js" defer> </script>
+        <script type="module" src="index.js" defer></script>
     </body>
 </html>
