@@ -1,14 +1,14 @@
 import { auth, db } from "./firebase-config.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { doc, setDoc, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const signupForm = document.getElementById("signupForm");
+  const signupForm = document.getElementById("signup");
 
   signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const username = document.getElementById("usernm").value;
+    const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("User signed up successfully!");
       window.location.href = "login.html";
       // Save user info to Firestore
-      await setDoc(doc(db, "users", user.uid), {
+      await addDoc(doc(db, "users"), {
+        userId: user.uid,
         username: username,
         email: email,
         createdAt: serverTimestamp()

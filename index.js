@@ -75,9 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
             buttonDiv.className = "sideButtons"; // Gives the div the classname "sideButtons".
     
             const statusButton = document.createElement("button"); // Adds the status button on the side
-    
+            statusButton.className = "statusButton";
+
             // Manages status button.
             statusButton.style.backgroundColor = task.completed ?  "#22E310" : "#FFC300"; // Checks boolean to see if completed or not and updates background color
+            const statusIcon = document.createElement('img'); // Creates an image element.
+            statusIcon.src = task.completed? 'assets/check.png' : 'assets/pending.png'; // Set the source of the image to your remove icon
+            statusIcon.alt = ''; // Set the alt text for the image
+            statusButton.appendChild(statusIcon); // Puts the image inside the remove button
             statusButton.addEventListener("click", async () => {
                 try {
                     await updateDoc(doc(db, "tasks", task.id), { // When clicked, it will reverse the boolean value in database
@@ -92,6 +97,10 @@ document.addEventListener("DOMContentLoaded", () => {
             
             const removeButton = document.createElement("button"); // Adds the remove button on the side
             removeButton.style.backgroundColor = "#E60202"; // Sets the background color of the remove button
+            const removeIcon = document.createElement('img'); // Creates an image element.
+            removeIcon.src = 'assets/X.png'; // Set the source of the image to your remove icon
+            removeIcon.alt = ''; // Set the alt text for the image
+            removeButton.appendChild(removeIcon); // Puts the image inside the remove button
             removeButton.addEventListener("click", async () => {
                 try {
                     await deleteDoc(doc(db, "tasks", task.id)); // When clicked, it will delete the document from the database
