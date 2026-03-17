@@ -258,9 +258,19 @@ body {
     .sideButtons button{
         width:40px;
         height:42px;
-        display: block;
+        display: flex;              /* added */
+        align-items: center;        /* added  */
+        justify-content: center;    /* added */
         border: none;
+        padding: 0;                 /* added */
     }
+
+    .sideButtons button img{
+        width: 20px; /* added */
+        height: 20px; /* added  */
+        object-fit: contain; /* added */
+    }
+
 
     .title{
         background-color: #618EFF;
