@@ -16,6 +16,7 @@ body {
     h1{
         font-size:32px;
         font-family: "Libre Baskerville";
+        margin:0px;
     }
     h2{
         font-size:24px;
@@ -59,7 +60,15 @@ body {
         height:30px;
         display: block;
         border: none;
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 0;                 
     }
+
+    .sideButtons button img{
+        width:80%;
+}
 
 
     .title{
@@ -116,6 +125,7 @@ body {
     h1{
         font-size:38px;
         font-family: "Libre Baskerville";
+        margin:0px;
     }
     h2{
         font-size:36px;
@@ -162,7 +172,15 @@ body {
         height: 32px;
         display: block;
         border: none;
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 0;                 
     }
+
+    .sideButtons button img{
+        width:80%;
+}
 
 
     .title{
@@ -219,6 +237,7 @@ body {
     h1{
         font-size:64px;
         font-family: "Libre Baskerville";
+        margin:0px;
     }
 
     h2{
@@ -258,19 +277,16 @@ body {
     .sideButtons button{
         width:40px;
         height:42px;
-        display: flex;              /* added */
-        align-items: center;        /* added  */
-        justify-content: center;    /* added */
         border: none;
-        padding: 0;                 /* added */
+        display: flex;              
+        align-items: center;        
+        justify-content: center;   
+        padding: 0;                 
     }
 
     .sideButtons button img{
-        width: 20px; /* added */
-        height: 20px; /* added  */
-        object-fit: contain; /* added */
-    }
-
+        width:80%;
+}
 
     .title{
         background-color: #618EFF;
