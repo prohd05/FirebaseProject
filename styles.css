@@ -46,6 +46,11 @@ body {
         width:165px;
         background-color: #FFF153;
         text-align: center;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .sideButtons{
@@ -158,6 +163,11 @@ body {
         width: 165px;
         background-color: #FFF153;
         text-align: center;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .sideButtons {
@@ -248,12 +258,22 @@ body {
         font-size: 24px;
         font-family: "Libre Baskerville";
     }
+
+    #mainDiv{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #tasks{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
     
     .card{
         width: 303px;
         height:294px;
         text-align: center;
-        display: inline-block;
+
     }
 
     .seperator{
@@ -261,10 +281,16 @@ body {
         text-align: center;
         width:262px;
         height:224px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
+    
     .cardBody{
-    display: flex;
-    align-items: center;
+        display: flex;
+        align-items: center;
     }
 
     .sideButtons{
