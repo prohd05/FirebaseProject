@@ -1,40 +1,23 @@
 import { auth, db } from "./firebase-config.js";
-import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { collection, addDoc, serverTimestamp, doc, getDocs, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const taskAdder = document.getElementById("addDiv");
-    
-    // Add Order
-    taskAdder.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const titleV = document.getElementById("taskTitle").value;
-    const descV = document.getElementById("taskDesc").value;
-
-    try {
-      await addDoc(collection(db, "tasks"), {
-          title: titleV, // Task title from input
-          desc: descV,   // Task description from input
-          completed: false, // New tasks start as not completed
-          createdAt: serverTimestamp() // Timestamp for sorting
-      });
-      console.log("Task Added: " + titleV);
-      await displayTasks(); // Refresh the task list dynamically instead of reloading the page
-            document.getElementById("taskTitle").value = ""; // Clear title input 
-            document.getElementById("taskDesc").value = "";  // Clear description input
-    } catch (error) {
-        alert("Error placing order: " + error.message); // Show error to user
-        console.error("Order error:", error); // Log error to console
-    }
+// Listen for auth state changes
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1000);
+    } 
   });
-});
 
   // Orders Listed
 
   document.addEventListener("DOMContentLoaded", async () => { // Wait for the DOM to fully load before executing the code
     await displayTasks();
   });
+  
+  const user = auth.currentUser;
 
   async function displayTasks() {
     // Select the collection
@@ -47,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Store documents in an array
         const orders = []; // Initialize an empty array to hold the orders
         querySnapshot.forEach((doc) => { // Iterate through each document in the snapshot and push its data into the orders array
+            if (doc.data().userID === auth.currentUser.uid) // Check if the userID in the document matches the current user's ID
             orders.push({ // Create an object for each document with its ID and data
                 id: doc.id, // Include the document ID in the order object
                 ...doc.data(), // Spread the document data into the order object
@@ -90,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                     await displayTasks(); // Refresh only the tasks dynamically 
                 } catch (error) {
-                    alert("Error updating task: " + error.message);
+                    console.log("Error updating task: " + error.message);
                 }
             });
             buttonDiv.appendChild(statusButton); // Puts the status button in the side button div
@@ -131,6 +115,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } catch (error) { // Handle any errors that occur during the data retrieval process and log them to the console, as well as alert the user
         console.error("Error reading data from Firestore:", error); // Log the error to the console for debugging purposes
-        alert("Failed to load tasks: " + error.message); // Alert the user about the failure to load orders
+        //alert("Failed to load tasks: " + error.message); // Alert the user about the failure to load orders
     }
-}
+}    
+
+    const addT = document.getElementById("at");
+    addT.addEventListener("click", () => {
+    window.location.href = "addTask.html";
+    });

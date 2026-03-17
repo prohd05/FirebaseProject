@@ -16,14 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       alert("User signed up successfully!");
-      window.location.href = "login.html";
+      
       // Save user info to Firestore
       await setDoc(doc(db, "users", user.uid), {
         username: username,
         email: email,
         createdAt: serverTimestamp()
       });
-      
+      window.location.href = "login.html";
       
     } catch (error) {
       alert("Error signing up: " + error.message);

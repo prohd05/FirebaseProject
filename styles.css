@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Iceland&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Iceland&family=Jaro:opsz@6..72&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
     background-color: #ABE8F5;;
@@ -11,6 +12,12 @@ body {
     align-items: center;
 }
 
+#atBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Mobile Media Query*/
 @media screen and (max-width:799px) {
     h1{
@@ -18,8 +25,9 @@ body {
         font-family: "Libre Baskerville";
         margin:0px;
     }
-    h2{
+    .heading2{
         font-size:24px;
+        font-family: "Jaro";
     }
 
     .paragraph1{
@@ -51,6 +59,7 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        box-shadow: 1px 1px 25px black;
     }
 
     .sideButtons{
@@ -123,6 +132,67 @@ body {
     #login{
         width:181px;
     }
+
+    #addCard{
+        width:276px;
+        height:781px;
+        background-color: #FFF153;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        border-radius: 7px;
+        padding-top: 5%;
+        box-shadow: 1px 1px 20px #000000;
+    }
+
+    #addCard label{
+        color:#618EFF;
+        text-decoration: underline;
+    }
+
+    #taskTitle{
+        width:230px;
+        height:57px;
+        border-radius: 5px;
+        background-color: #FFFB91;
+        margin-bottom: 5%;
+        border: solid black 1px;
+    }
+
+    #taskDesc{
+        width: 232px;
+        height: 492px;
+        border-radius: 5px;
+        background-color: #FFFB91;
+        border: solid black 1px;
+    }
+
+    #addButton{
+        color:#FFFFFF;
+        background-color:#618EFF; 
+        border: solid 2px black;
+        border-radius: 10px;
+        width: 161px;
+        height:30px;
+
+        margin-top: 4%;
+    }
+
+    #taskDate{
+        background-color: #FFFB91;
+        width: 232px;
+        height: 51px;
+        border-radius: 5px;
+        border: solid black 1px;
+        margin-top: 3%;
+    }
+
+    #dateAsk{
+        margin-top: 5%;
+    }
 }
 
 /* Tablet Media Query*/
@@ -132,8 +202,9 @@ body {
         font-family: "Libre Baskerville";
         margin:0px;
     }
-    h2{
+    .heading2{
         font-size:36px;
+        font-family: "Jaro";
     }
 
     .paragraph1{
@@ -168,6 +239,7 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        box-shadow: 1px 1px 25px black;
     }
 
     .sideButtons {
@@ -240,6 +312,69 @@ body {
     #login{
         width:216px;
     }
+
+    #addCard{
+        height:1146px;
+        width:708px;
+        background-color: #FFF153;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        border-radius: 7px;
+        box-shadow: 1px 1px 20px #000000;
+    }
+
+    #addCard label{
+        color:#618EFF;
+        text-decoration: underline;
+    }
+
+    #taskTitle{
+        width:673px;
+        height:82px;
+        border-radius: 5px;
+        background-color: #FFFB91;
+        margin-bottom: 5%;
+        border: solid black 1px;
+    }
+
+    #taskDesc{
+        width: 673px;
+        height: 417px;
+        border-radius: 5px;
+        background-color: #FFFB91;
+        border: solid black 1px;
+    }
+
+    #addButton{
+        color:#FFFFFF;
+        background-color:#618EFF; 
+        border: solid 2px black;
+        border-radius: 10px;
+        width: 232px;
+        height:39px;
+
+        margin-top: 30%;
+    }
+
+    #taskDate{
+        background-color: #FFFB91;
+        width: 503px;
+        height: 59px;;
+        border-radius: 5px;
+        border: solid black 1px;
+    }
+
+    #dateAsk{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        margin-top: 15%;
+    }
 }
 
 /* PC Media Query*/
@@ -250,8 +385,9 @@ body {
         margin:0px;
     }
 
-    h2{
-        font-size:48px;;
+    .heading2{
+        font-size:48px;
+        font-family: "Jaro";
     }
 
     .paragraph1{
@@ -286,6 +422,7 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        box-shadow: 1px 1px 25px black;
     }
     
     .cardBody{
@@ -361,12 +498,72 @@ body {
     #login{
         width:285px;
     }
+
+    #addCard{
+        height:838px;
+        width:984px;
+        background-color: #FFF153;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        border-radius: 7px;
+
+        box-shadow: 1px 1px 20px #000000;
+    }
+
+    #addCard label{
+        color:#618EFF;
+        text-decoration: underline;
+    }
+
+    #taskTitle{
+        width:930px;
+        height:80px;
+        border-radius: 5px;
+        background-color: #FFFB91;
+        margin-bottom: 5%;
+        border: solid black 1px;
+    }
+
+    #taskDesc{
+        width: 930px;
+        height: 394px;
+        border-radius: 5px;
+        background-color: #FFFB91;
+        border: solid black 1px;
+    }
+
+    #addButton{
+        color:#FFFFFF;
+        background-color:#618EFF; 
+        border: solid 2px black;
+        border-radius: 10px;
+        width: 258px;
+        height:39px;
+
+        margin-top: 5%;
+    }
+
+    #taskDate{
+        background-color: #FFFB91;
+        width: 720px;
+        height: 57px;;
+        border-radius: 5px;
+        border: solid black 1px;
+    }
+
+    #dateAsk{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        margin-top: 3%;
+    }
 }
 
-#addButton{
-    color:#618EFF;
-    border: none;
-    background-color: transparent;
-}
+
 
 
