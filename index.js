@@ -39,10 +39,24 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
   
         // Sort orders by createdAt descending (newest first)
         orders.sort((a, b) => b.createdAt?.toDate() - a.createdAt?.toDate());
-  
+
+        // Creates the Plus Card within the list
+        const addCard = document.createElement("div");
+        addCard.className = "seperator";
+        const addButt = document.createElement("button");
+        addButt.textContent = "+";
+        addButt.id="at";
+        addCard.appendChild(addButt);
+        
+
+        const addT = document.getElementById("at");
+        addT.addEventListener("click", () => {
+        window.location.href = "addTask.html";
+        });
+
         // Display data on the webpage
         const list = document.getElementById("viewTasks"); // Select the HTML element where the orders will be displayed
-        list.innerHTML = ''; // Clear only the task cards, not the Add Task card 
+        list.innerHTML = addCard; // Resets the list to just the plus button
 
         orders.forEach((task) => {
             const card = document.createElement("div"); // Created a div for that task.
@@ -103,7 +117,7 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
             separator.appendChild(descH4); // Puts the description in the separator div
             
             const statusH4 = document.createElement("h4"); // Adds the status.
-            statusH4.textContent = "Status: " + (task.completed ? "Completed" : "Pending"); // Changes text value for when button is clicked.
+            statusH4.textContent = "Status: " + (task.completed ? "Completed" : "In Progress"); // Changes text value for when button is clicked.
             separator.appendChild(statusH4); // Puts the status in the separator div
 
             cardBody.appendChild(buttonDiv); // Puts the side button div in the card body div        
@@ -119,7 +133,4 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
     }
 }    
 
-    const addT = document.getElementById("at");
-    addT.addEventListener("click", () => {
-    window.location.href = "addTask.html";
-    });
+    
