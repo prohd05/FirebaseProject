@@ -25,6 +25,13 @@ body {
         font-family: "Libre Baskerville";
         margin:0px;
     }
+
+    h2{
+        font-size:24px;
+        font-family: "Jaro";
+        margin:0px;
+    }
+
     .heading2{
         font-size:24px;
         font-family: "Jaro";
@@ -42,6 +49,10 @@ body {
 
         width:200px;
         height:200px;
+    }
+
+    .card h2{
+        color:#618EFF;
     }
 
     .cardBody{
@@ -202,6 +213,13 @@ body {
         font-family: "Libre Baskerville";
         margin:0px;
     }
+
+    h2{
+        font-size:36px;
+        font-family: "Jaro";
+        margin:0px;
+    }
+
     .heading2{
         font-size:36px;
         font-family: "Jaro";
@@ -222,6 +240,10 @@ body {
         flex-direction: column;
         width: 199px;
         height: 218px;
+    }
+
+    .card h2{
+        color:#618EFF;
     }
 
     .cardBody {
@@ -385,6 +407,12 @@ body {
         margin:0px;
     }
 
+    h2{
+        font-size:48px;
+        font-family: "Jaro";
+        margin:0px;
+    }
+
     .heading2{
         font-size:48px;
         font-family: "Jaro";
@@ -395,10 +423,10 @@ body {
         font-family: "Libre Baskerville";
     }
 
-    #mainDiv{
+    #viewTasks{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-    }
+        }
 
     #tasks{
         display: grid;
@@ -409,7 +437,14 @@ body {
         width: 303px;
         height:294px;
         text-align: center;
+    }
 
+    .card h2{
+        color:#618EFF;
+    }
+
+    #buttCard{
+        
     }
 
     .seperator{

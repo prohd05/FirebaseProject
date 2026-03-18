@@ -41,28 +41,39 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
         orders.sort((a, b) => b.createdAt?.toDate() - a.createdAt?.toDate());
 
         // Creates the Plus Card within the list
-        const addCard = document.createElement("div");
-        addCard.className = "seperator";
-        const addButt = document.createElement("button");
-        addButt.textContent = "+";
-        addButt.id="at";
-        addCard.appendChild(addButt);
-        
+        const addHead = document.createElement("div"); // Adds a main div for the plus button
+        addHead.className = "card"; // Gives the div the classname "card".
 
-        const addT = document.getElementById("at");
-        addT.addEventListener("click", () => {
+        const addCard = document.createElement("div"); // Adds the div for the plus button
+        addCard.className = "seperator"; // Gives the div the classname "separator".
+        addCard.id = "buttCard"; // Gives the div the id "addCard"
+
+        const addTitle = document.createElement("h2"); // Adds the title. 
+        addTitle.textContent = "Add Task"; // Sets a addTitle.
+        addHead.appendChild(addTitle); // Puts the title in the card div.
+        
+        const addButt = document.createElement("button"); // Adds a button 
+        addButt.textContent = "+";
+        addButt.id="at"; // Gives the button the id "at"
+        addCard.appendChild(addButt); ;// Puts the button in the div
+        
+        addHead.appendChild(addCard); // Puts the yellow part in the card div.
+        
+        // Add event listener to button before appending to page
+        addButt.addEventListener("click", () => {
         window.location.href = "addTask.html";
         });
 
         // Display data on the webpage
         const list = document.getElementById("viewTasks"); // Select the HTML element where the orders will be displayed
-        list.innerHTML = addCard; // Resets the list to just the plus button
+        list.innerHTML = ""; // Clear the list
+        list.appendChild(addHead); // Add the plus button to the list
 
         orders.forEach((task) => {
             const card = document.createElement("div"); // Created a div for that task.
             card.className = "card"; // Gives the div the classname "card". 
             
-            const title = document.createElement("h1"); // Adds the title. 
+            const title = document.createElement("h2"); // Adds the title. 
             title.textContent = task.title; // Sets title to the title value in the database.
             card.appendChild(title); // Puts the title in the card div.
             
