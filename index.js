@@ -120,6 +120,11 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
             statusH4.textContent = "Status: " + (task.completed ? "Completed" : "In Progress"); // Changes text value for when button is clicked.
             separator.appendChild(statusH4); // Puts the status in the separator div
 
+            const dateH4 = document.createElement("h4"); // Adds the dueDate.
+            dateH4.textContent = "Due Date: " + task.dueDate; // Adds the value from the database to the description text.
+            separator.appendChild(dateH4); // Puts the dueDate in the separator div
+            
+
             cardBody.appendChild(buttonDiv); // Puts the side button div in the card body div        
             cardBody.appendChild(separator); // Puts the separator div in the card body div
             

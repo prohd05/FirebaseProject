@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const titleV = document.getElementById("taskTitle").value;
     const descV = document.getElementById("taskDesc").value;
     const dueV = document.getElementById("taskDate").value;
+    const user = auth.currentUser;
     
     try {
       await addDoc(collection(db, "tasks"), {
@@ -34,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         createdAt: serverTimestamp() // Timestamp for sorting
       });
       console.log("Task Added: " + titleV);
-      await displayTasks(); // Refresh the task list dynamically instead of reloading the page
             document.getElementById("taskTitle").value = ""; // Clear title input 
             document.getElementById("taskDesc").value = "";  // Clear description input
             document.getElementById("taskDate").value = "";  // Clear dueDate input
+            window.location.href = "index.html";
     } catch (error) {
-       //alert("Error placing order: " + error.message); // Show error to user
+        alert("Error placing order: " + error.message); // Show error to user
         console.error("Order error:", error); // Log error to console
     }
   });

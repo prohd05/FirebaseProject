@@ -423,6 +423,13 @@ body {
         align-items: center;
         justify-content: center;
         box-shadow: 1px 1px 25px black;
+
+        overflow-y:auto;
+        overflow-x:hidden;
+        overflow-wrap: break-word;
+
+        margin-top:15px;
+        word-break: break-all;
     }
     
     .cardBody{
