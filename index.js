@@ -43,6 +43,7 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
         // Creates the Plus Card within the list
         const addHead = document.createElement("div"); // Adds a main div for the plus button
         addHead.className = "card"; // Gives the div the classname "card".
+        addHead.id = "addHead"; // Gives the div the id "addHead"
 
         const addCard = document.createElement("div"); // Adds the div for the plus button
         addCard.className = "seperator"; // Gives the div the classname "separator".
@@ -53,7 +54,11 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
         addHead.appendChild(addTitle); // Puts the title in the card div.
         
         const addButt = document.createElement("button"); // Adds a button 
-        addButt.textContent = "+";
+        const addIcon = document.createElement('img'); // Creates an image element.
+        addIcon.src = 'assets/+.png'; // Set the source of the image to your plus icon
+        addIcon.alt = '+'; // Set the alt text for the image
+        addButt.appendChild(addIcon); // Puts the image inside the button
+        
         addButt.id="at"; // Gives the button the id "at"
         addCard.appendChild(addButt); ;// Puts the button in the div
         

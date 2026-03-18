@@ -38,10 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("taskTitle").value = ""; // Clear title input 
             document.getElementById("taskDesc").value = "";  // Clear description input
             document.getElementById("taskDate").value = "";  // Clear dueDate input
-            window.location.href = "index.html";
     } catch (error) {
         alert("Error placing order: " + error.message); // Show error to user
         console.error("Order error:", error); // Log error to console
     }
   });
 });
+
+const backButt = document.getElementById("backButton");
+
+// Add event listener to button before appending to page
+backButt.addEventListener("click", () => {
+  window.location.href = "index.html";
+  });
