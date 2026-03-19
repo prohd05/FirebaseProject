@@ -8,24 +8,34 @@
     </head>
     <body>
         <nav class="navbar">
-             <h1> Tasks </h1>
-        </nav>
+                <h1> Your Task </h1>
+                <div class="signout">
+                    <div class="navDiv">
+                        <p class="loginStatus" id="unAdd"> Finding User... </p>
+                        <button class="logout" id="logoutAdd">
+                            <img src="assets/logout.png" alt="Logout"> 
+                        </button>
+                    </div>
+                </div>
+            </nav>
         <div id="atBody">
                 <div id="addCard">
                     <form id="addDiv">
                         <label class="heading2">Enter the Task’s Title</label><br>
-                        <textarea id="taskTitle" required class="paragraph1"></textarea><br>
+                        <input id="taskTitle" maxlength="15" class="paragraph1" required><br>
 
                         <label class="heading2">Task Description:</label><br>
-                        <textarea id="taskDesc" required class="paragraph1"></textarea><br>
+                        <textarea  id="taskDesc" class="paragraph1" required></textarea><br>
 
                         <div id="dateAsk">
-                        <label class="heading2">Due Date:</label> 
-                        <textarea id="taskDate" type="date" required class="paragraph1"></textarea><br>
+                            <label class="heading2">Due Date:</label> 
+                            <input id="taskDate" type="date" required class="paragraph1"><br>
                         </div>
-                
-                        <button id="addButton" type="submit" class="paragraph1"> Add Task </button>
-                        <button id="backButton" class="paragraph1"> Back </button>
+
+                        <div id="buttonAdd">
+                            <button id="addButton" type="submit" class="paragraph1"> Add Task </button>
+                            <button id="backButton"> <img src="assets/back.png"> </button>
+                        </div>
                     </form>
                 </div>
             </div>

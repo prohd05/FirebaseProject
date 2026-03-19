@@ -1,15 +1,38 @@
 import { auth, db } from "./firebase-config.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { collection, doc, getDoc, getDocs, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Listen for auth state changes
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        setTimeout(() => {
-        window.location.href = "login.html";
-      }, 1000);
-    } 
-  });
+  onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    try {
+      const uni = document.getElementById("unIndex"); // Get the element to display the username
+      const userRef = doc(db, "users", user.uid); // Reference to users/{uid}
+      const userSnapshot = await getDoc(userRef); // Get the user document from Firestore
+      const username = userSnapshot.data(); // Get data from Firestore
+      uni.textContent = username.username; // Set the username in the navbar
+    } catch (error) {
+      console.error("Error fetching user:", error); 
+    }
+
+  } else {
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+  }
+});
+
+  /// Sign Out Button
+    const logoutButton = document.getElementById("logoutIndex"); // Select the logout button using its ID
+    logoutButton.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      //alert("Logged out successfully!");
+      window.location.href = "login.html";
+    } catch (error) {
+      console.log("Error logging out: " + error.message);
+    }
+    });
 
   // Orders Listed
 
@@ -42,7 +65,7 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
 
         // Creates the Plus Card within the list
         const addHead = document.createElement("div"); // Adds a main div for the plus button
-        addHead.className = "card"; // Gives the div the classname "card".
+        //addHead.className = "card"; // Gives the div the classname "card".
         addHead.id = "addHead"; // Gives the div the id "addHead"
 
         const addCard = document.createElement("div"); // Adds the div for the plus button
@@ -52,7 +75,7 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
         const addTitle = document.createElement("h2"); // Adds the title. 
         addTitle.textContent = "Add Task"; // Sets a addTitle.
         addHead.appendChild(addTitle); // Puts the title in the card div.
-        
+  
         const addButt = document.createElement("button"); // Adds a button 
         const addIcon = document.createElement('img'); // Creates an image element.
         addIcon.src = 'assets/+.png'; // Set the source of the image to your plus icon
@@ -120,7 +143,7 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
                     await deleteDoc(doc(db, "tasks", task.id)); // When clicked, it will delete the document from the database
                     await displayTasks(); // Refresh only the tasks dynamically
                 } catch (error) {
-                    alert("Error deleting task: " + error.message);
+                    console.log("Error deleting task: " + error.message);
                 }
             });
             buttonDiv.appendChild(removeButton); // Puts the remove button in the side button div
@@ -128,18 +151,21 @@ import { collection, doc, getDocs, updateDoc, deleteDoc } from "https://www.gsta
             const separator = document.createElement("div"); // Adds a div
             separator.className = "seperator"; // Gives the div the classname "separator".
             
-            const descH4 = document.createElement("h4"); // Adds the description.
-            descH4.textContent = "Desc: " + task.desc; // Adds the value from the database to the description text.
+            const descH4 = document.createElement("p"); // Adds the description.
+            descH4.textContent = task.desc; // Adds the value from the database to the description text.
             separator.appendChild(descH4); // Puts the description in the separator div
             
-            const statusH4 = document.createElement("h4"); // Adds the status.
-            statusH4.textContent = "Status: " + (task.completed ? "Completed" : "In Progress"); // Changes text value for when button is clicked.
+            const statusH4 = document.createElement("p"); // Adds the status.
+            const rawDate = task.dueDate; // e.g. "YYYY-MM-DD"
+            const formattedDate = new Date(rawDate).toLocaleDateString("en-US"); // Converts to "MM/DD/YYYY" format 
+            statusH4.textContent = (task.completed ? "Completed" : "In Progress") + ", Due " + formattedDate; // Changes text value for when button is clicked.
             separator.appendChild(statusH4); // Puts the status in the separator div
 
+            /*
             const dateH4 = document.createElement("h4"); // Adds the dueDate.
             dateH4.textContent = "Due Date: " + task.dueDate; // Adds the value from the database to the description text.
             separator.appendChild(dateH4); // Puts the dueDate in the separator div
-            
+            */
 
             cardBody.appendChild(buttonDiv); // Puts the side button div in the card body div        
             cardBody.appendChild(separator); // Puts the separator div in the card body div

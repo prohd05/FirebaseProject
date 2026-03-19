@@ -7,11 +7,18 @@
         <title> View Tasks </title>
     </head>
     <body>
-        <div id="tasksBody">
+        <div id="tasks">
             <nav class="navbar">
-                <h1> Tasks </h1>
-                <button class="logut"> <img src="assets/logout.png" alt="Logout"> </button>
-            </nav>
+                    <h1> Tasks </h1>
+                    <div class="signout">
+                        <div class="navDiv">
+                            <p class="loginStatus" id="unIndex"> Finding User... </p>
+                            <button class="logout" id="logoutIndex">
+                                <img src="assets/logout.png" alt="Logout"> 
+                            </button>
+                        </div>
+                    </div>
+                </nav>
                 <div id="viewTasks"></div>
         </div>
         <script type="module" src="index.js" defer></script>

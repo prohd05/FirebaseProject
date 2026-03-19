@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      alert("User signed up successfully!");
+      //alert("User signed up successfully!");
       
       // Save user info to Firestore
       await setDoc(doc(db, "users", user.uid), {
@@ -26,8 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "login.html";
       
     } catch (error) {
-      alert("Error signing up: " + error.message);
+      //alert("Error signing up: " + error.message);
       console.error("Signup error:", error);
     }
   });
+});
+
+
+const sia = document.getElementById("si");
+sia.addEventListener("click", () => {
+  window.location.href = "login.html";
 });

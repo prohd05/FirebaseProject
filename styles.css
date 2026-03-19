@@ -16,6 +16,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5%;
 }
 
 #at{
@@ -24,13 +25,16 @@ body {
 }
 
 #tasks{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 15%;
 }
 
 /* Mobile Media Query*/
 @media screen and (max-width:799px) {
+
+    #tasks{
+        margin-bottom: 40%;
+    }
+
     h1{
         font-size:32px;
         font-family: "Libre Baskerville";
@@ -49,6 +53,11 @@ body {
         margin:0px;
     }
 
+    p{
+        font-size: 16px;
+        font-family: "Libre Baskerville";
+    }
+
     .paragraph1{
         font-size: 16px;
         font-family: "Libre Baskerville";
@@ -57,10 +66,40 @@ body {
     .navbar{
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         color:#FFFFFF;
         background-color: #618EFF;
         height: 82px;
+        margin-bottom: 0px;
+    }
+
+    .navbar h1{
+        margin-left: 2%;
+    }
+
+    .navbar p{
+        margin-bottom: 0%;
+    }
+
+    .navDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logout{
+        background-color: transparent;
+        border: none;
+        height: 41px;
+    }
+
+    .logout img{
+        height: 70%;
+    }
+
+    .signout{
+        position: absolute;
+        right: 2%;
     }
 
     #viewTasks{
@@ -75,7 +114,7 @@ body {
         display: flex;
         flex-direction: column;
         text-align: center;
-
+        align-items: end;
         width:200px;
         height:200px;
     }
@@ -83,12 +122,16 @@ body {
     #addHead{
         width: 167px;
         height:199px;
+        margin-left: 28px;
+        text-align: center;
+        color:#618EFF;
     }
 
     .card h2{
         color:#618EFF;
         overflow: hidden;
         text-overflow: ellipsis;
+        width:165px;
     }
 
     .cardBody{
@@ -106,12 +149,14 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 1px 1px 25px black;
+        box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.25);
 
         overflow-y:auto;
         overflow-x:hidden;
-        overflow-wrap: break-word;
-        word-break: break-all;
+        word-break: break-word; /* word-break: break-all*/
+
+        padding-left:5%;
+        padding-right:5%;
     }
 
     .sideButtons{
@@ -188,7 +233,7 @@ body {
     #addCard{
         margin-top: 5%;
         width:276px;
-        height:781px;
+        height:790px;
         background-color: #FFF153;
 
         display: flex;
@@ -198,7 +243,7 @@ body {
 
         border-radius: 7px;
         padding-top: 2%;
-        box-shadow: 1px 1px 20px #000000;
+        box-shadow: 4px 9px 4px 3px rgba(0, 0, 0, 0.25);
     }
 
     #addCard label{
@@ -211,6 +256,7 @@ body {
         height:57px;
         border-radius: 5px;
         background-color: #FFFB91;
+        margin-top: 2%;
         margin-bottom: 5%;
         border: solid black 1px;
         padding-left: 3%;
@@ -222,7 +268,9 @@ body {
         border-radius: 5px;
         background-color: #FFFB91;
         border: solid black 1px;
+        margin-top: 2%;
         padding-left: 3%;
+        padding-top: 3%;
     }
     
     #taskDate{
@@ -233,6 +281,7 @@ body {
         border: solid black 1px;
         margin-top: 3%;
         padding-left: 3%;
+        padding-right:1%;
     }
 
     #dateAsk{
@@ -250,12 +299,23 @@ body {
     }
 
     #backButton{
-        color:#FFFFFF;
         background-color:#618EFF; 
         border: solid 2px black;
         border-radius: 10px;
         height:30px;
         margin-top: 4%;
+        margin-left: 3%;
+        width:10%;
+    }
+
+    #backButton img{
+        width:100%;
+    }
+
+    #buttonAdd{
+        display:flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -279,9 +339,29 @@ body {
         margin:0px;
     }
 
+    p{
+        font-family: "Libre Baskerville";
+        font-size: 20px;
+    }
+
     .paragraph1{
         font-family: "Libre Baskerville";
         font-size: 20px;
+    }
+
+    .logout{
+        background-color: transparent;
+        border: none;
+        height: 41px;
+    }
+
+    .logout img{
+        height: 100%;
+    }
+
+    .signout{
+        position: absolute;
+        right: 2%;
     }
 
     .navbar{
@@ -293,11 +373,17 @@ body {
         height: 82px;
     }
 
+    .navDiv{
+        display: flex;
+        align-items: center;
+    }
+
     #viewTasks{
         margin-top: 3%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         place-items: center;
+        align-items: start;
         row-gap: 10%;
     }
 
@@ -307,17 +393,22 @@ body {
         width: 199px;
         height: 218px;
         text-align: center;
+        align-items: end;
     }
 
     #addHead{
         height: 218px;
         width:167px;
+        margin-left: 32px;
+        text-align: center;
+        color:#618EFF;
     }
 
     .card h2{
         color:#618EFF;
         overflow: hidden;
         text-overflow: ellipsis;
+        width: 165px;
     }
 
     .cardBody {
@@ -335,12 +426,14 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 1px 1px 25px black;
+        box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.25);
 
         overflow-y:auto;
         overflow-x:hidden;
-        overflow-wrap: break-word;
-        word-break: break-all;
+        word-break: break-word; /* word-break: break-all*/
+
+        padding-left:5%;
+        padding-right:5%;
     }
 
     .sideButtons {
@@ -427,7 +520,7 @@ body {
         text-align: center;
 
         border-radius: 7px;
-        box-shadow: 1px 1px 20px #000000;
+        box-shadow: 4px 9px 4px 3px rgba(0, 0, 0, 0.25);
     }
 
     #addCard label{
@@ -443,6 +536,7 @@ body {
         margin-bottom: 5%;
         border: solid black 1px;
         padding-left: 1%;   
+        margin-top: 1%;
     }
 
     #taskDesc{
@@ -452,22 +546,25 @@ body {
         background-color: #FFFB91;
         border: solid black 1px;
         padding-left: 1%;
+        padding-top: 1%;
+        margin-top: 1%;
     }
     
     #taskDate{
         background-color: #FFFB91;
         width: 503px;
-        height: 59px;;
+        height: 59px;
         border-radius: 5px;
         border: solid black 1px;
         padding-left: 1%;
+        padding-right:1%;
     }
 
     #dateAsk{
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-top: 15%;
+        margin-top: 10%;
     }
     #addButton{
         color:#FFFFFF;
@@ -476,7 +573,6 @@ body {
         border-radius: 10px;
         width: 232px;
         height:39px;
-        margin-top: 15%;
     }
 
     #backButton{
@@ -485,7 +581,20 @@ body {
         border: solid 2px black;
         border-radius: 10px;
         height:39px;
-        margin-top: 15%;
+        
+        margin-left: 2%;
+        width: 10%;
+    }
+
+    #backButton img{
+        width:30%;
+    }
+
+    #buttonAdd{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
     }
 }
 
@@ -509,6 +618,11 @@ body {
         margin:0px;
     }
 
+    p{
+        font-size: 24px;
+        font-family: "Libre Baskerville";
+    }
+
     .paragraph1{
         font-size: 24px;
         font-family: "Libre Baskerville";
@@ -523,8 +637,33 @@ body {
         height: 106px;
     }
 
-    .logut{
+    .navDiv{
+        display: flex;
+        align-items: center;
+    }
 
+    .logout{
+        background-color: transparent;
+        border: none;
+        height: 41px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .loginStatus{
+        color:#FFFFFF;
+        margin-right: 2%;
+    }
+
+    .logout img{
+        height: 100%;
+    }
+    
+    .signout{
+        position: absolute;
+        right: 2%;
     }
 
     #viewTasks{
@@ -532,6 +671,7 @@ body {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         place-items: center;
+        align-items: start;
         row-gap: 10%;
         }
     
@@ -539,18 +679,24 @@ body {
         width: 303px;
         height:294px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
     }
 
     .card h2{
         color:#618EFF;
         overflow: hidden;
         text-overflow: ellipsis;
+        width:262px;
     }
 
     #addHead{
         height: 224px;
         width:262px;
-        margin:0px;
+        margin-left: 40px;
+        text-align: center;
+        color:#618EFF;
     }
 
     .seperator{
@@ -563,18 +709,19 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        box-shadow: 1px 1px 25px black;
+        box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.25);
 
         overflow-y:auto;
         overflow-x:hidden;
-        overflow-wrap: break-word;
-        word-break: break-all;
+        word-break: break-word; /* word-break: break-all*/
+        
+        padding-left:5%;
+        padding-right:5%;
     }
     
     .cardBody{
         display: flex;
         align-items: center;
-        
     }
 
     .sideButtons{
@@ -660,7 +807,7 @@ body {
 
         border-radius: 7px;
 
-        box-shadow: 1px 1px 20px #000000;
+        box-shadow: 4px 9px 4px 3px rgba(0, 0, 0, 0.25);
     }
 
     #addCard label{
@@ -676,6 +823,7 @@ body {
         margin-bottom: 5%;
         border: solid black 1px;
         padding-left: 1%;
+        margin-top: 1%;
     }
 
     #taskDesc{
@@ -685,6 +833,8 @@ body {
         background-color: #FFFB91;
         border: solid black 1px;
         padding-left: 1%;
+        padding-top: 1%;
+        margin-top: 1%;
     }
     
     #dateAsk{
@@ -702,6 +852,7 @@ body {
         border-radius: 5px;
         border: solid black 1px;
         padding-left: 1%;
+        padding-right:1%;
     }
 
     #addButton{
@@ -711,8 +862,6 @@ body {
         border-radius: 10px;
         width: 258px;
         height:39px;
-
-        margin-top: 5%;
     }
 
     #backButton{
@@ -721,7 +870,19 @@ body {
         border: solid 2px black;
         border-radius: 10px;
         height:39px;
-        margin-top: 5%;
+        margin-left:3%;
+        width:10%;
+    }
+
+    #backButton img{
+        width:30%;
+    }
+
+    #buttonAdd{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2%;
     }
 }
 

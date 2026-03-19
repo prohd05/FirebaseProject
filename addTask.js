@@ -1,17 +1,40 @@
 import { auth, db } from "./firebase-config.js";
-import { collection, addDoc, serverTimestamp} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { collection, doc, addDoc, getDoc , serverTimestamp} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 const user = auth.currentUser;
 
 // Listen for auth state changes
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        setTimeout(() => {
-        window.location.href = "login.html";
-      }, 1000);
-    } 
-  });
+  onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    try {
+      const un = document.getElementById("unAdd"); // Get the element to display the username
+      const userRef = doc(db, "users", user.uid); // Reference to users/{uid}
+      const userSnapshot = await getDoc(userRef); // Get the user document from Firestore
+      const username = userSnapshot.data(); // Get data from Firestore
+      un.textContent = username.username; // Set the username in the navbar
+    } catch (error) {
+      console.error("Error fetching user:", error); 
+    }
+
+  } else {
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+  }
+});
+
+  /// Sign Out Button
+    const logoutButt = document.getElementById("logoutAdd"); // Select the logout button using its ID
+    logoutButt.addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      //alert("Logged out successfully!");
+      window.location.href = "login.html";
+    } catch (error) {
+      console.log("Error logging out: " + error.message);
+    }
+    });
 
 document.addEventListener("DOMContentLoaded", () => {
     const taskAdder = document.getElementById("addDiv");
@@ -39,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("taskDesc").value = "";  // Clear description input
             document.getElementById("taskDate").value = "";  // Clear dueDate input
     } catch (error) {
-        alert("Error placing order: " + error.message); // Show error to user
+        //alert("Error placing order: " + error.message); // Show error to user
         console.error("Order error:", error); // Log error to console
     }
   });
